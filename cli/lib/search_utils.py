@@ -1,7 +1,6 @@
 import json
 import os
 from typing import Any, TypedDict
-from keyword_search import prep_text
 
 
 class Movie(TypedDict):
@@ -58,10 +57,6 @@ def load_movies() -> list[Movie]:
     with open(DATA_PATH, "r") as f:
         data = json.load(f)
     return data["movies"]
-
-def load_stopwords() -> list[str]:
-    with open(STOPWORDS_PATH, "r") as f:
-        return [prep_text(word) for word in f.read().splitlines()]
 
 
 def format_search_result(
